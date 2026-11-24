@@ -1,0 +1,11 @@
+{
+  "raw_rows": 245441,
+  "dropped_exact_duplicates": 318,
+  "dropped_impossible_or_unparseable": 0,
+  "clean_rows": 245123,
+  "period": "2017-01 to 2026-11",
+  "notes": [
+    "Exact duplicates dropped: the source publishes no unit number, so rows identical on every field are treated as repeated records; some could in principle be distinct flats in the same block sold in the same month on identical terms.",
+    "No rows had non-positive prices or floor areas in this extract."
+  ]
+}
