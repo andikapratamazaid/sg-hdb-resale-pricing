@@ -1,0 +1,25 @@
+{
+  "total_transactions_clean": 245123,
+  "period": "2017-01 to 2026-11",
+  "train_rows": 196686,
+  "test_rows": 48437,
+  "split": "train <= 2024-12; test >= 2025-01",
+  "median_price_2017": 410000.0,
+  "median_price_2024": 590000.0,
+  "median_price_2025": 628000.0,
+  "median_price_2026_partial": 635000.0,
+  "lease_effect_pct_per_year_linear": 0.994,
+  "floor_area_effect_pct_per_sqm_linear": 0.814,
+  "metrics": {
+    "linear_hedonic": {
+      "mae_sgd": 52428.813,
+      "mape_pct": 8.021,
+      "r2": 0.889
+    },
+    "gradient_boosting": {
+      "mae_sgd": 41038.369,
+      "mape_pct": 5.781,
+      "r2": 0.915
+    }
+  }
+}
