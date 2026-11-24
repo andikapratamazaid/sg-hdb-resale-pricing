@@ -1,0 +1,9 @@
+{
+  "dataset_id": "d_8b84c4ee58e3cfc0ece0d773c8ca6abc",
+  "method": "api-open.data.gov.sg v1 initiate/poll-download",
+  "rows": 245441,
+  "month_min": "2017-01",
+  "month_max": "2026-11",
+  "file": "hdb_resale_2017_onwards.csv",
+  "bytes": 24281734
+}
