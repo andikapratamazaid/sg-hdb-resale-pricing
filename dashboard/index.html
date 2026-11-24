@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HDB Resale Price Intelligence - Client Dashboard</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; margin: 2rem auto;
+  max-width: 980px; padding: 0 1rem; color: #1a1a1a; line-height: 1.5; }
+h1 { font-size: 1.6rem; } h2 { margin-top: 2rem; font-size: 1.2rem; }
+.kpis { display: flex; flex-wrap: wrap; gap: 1rem; }
+.kpi { background: #eef3f9; border-radius: 8px; padding: 1rem 1.2rem; flex: 1 1 180px; }
+.kpi b { display: block; font-size: 1.35rem; color: #2e6da4; }
+table { border-collapse: collapse; width: 100%; margin: 0.6rem 0 1.2rem; }
+th, td { border-bottom: 1px solid #ddd; padding: 0.35rem 0.5rem; text-align: left; }
+img { max-width: 100%; }
+.note { background: #fdf6e3; border-radius: 8px; padding: 0.8rem 1rem; font-size: 0.92rem; }
+</style>
+</head>
+<body>
+<h1>HDB Resale Price Intelligence</h1>
+<p>Prepared for a Singapore proptech startup building an HDB home-valuation tool.
+Data: 245,123 HDB resale transactions registered
+2017-01 to 2026-11 (data.gov.sg, official records). <i>This dashboard belongs to a
+simulated freelance engagement created for portfolio purposes; the client
+brief is fictional, the data and results are real.</i></p>
+
+<div class="kpis">
+<div class="kpi"><b>S$628,000</b>Median resale price, 2025</div>
+<div class="kpi"><b>5.8% MAPE</b>Valuation model error (test 2025-2026, R2 0.91)</div>
+<div class="kpi"><b>3.7%</b>Million-dollar share of sales, 2024 (vs 0.23% in 2017)</div>
+<div class="kpi"><b>+1.0%</b>Price effect per extra year of remaining lease</div>
+</div>
+
+<h2>Market trend</h2>
+<img src="../charts/monthly_price_volume.png" alt="Monthly volume and median price">
+<img src="../charts/million_dollar_share.png" alt="Million-dollar share by year">
+
+<h2>Most expensive towns (median price per sqm)</h2>
+<table><tr><th>Town</th><th>Transactions</th><th>Median price</th><th>Median S$/sqm</th></tr>
+<tr><td>CENTRAL AREA</td><td>1,902</td><td>S$580,000</td><td>S$7,732</td></tr>
+<tr><td>QUEENSTOWN</td><td>6,750</td><td>S$680,000</td><td>S$7,579</td></tr>
+<tr><td>BUKIT MERAH</td><td>9,336</td><td>S$668,000</td><td>S$7,000</td></tr>
+<tr><td>BUKIT TIMAH</td><td>600</td><td>S$792,500</td><td>S$6,802</td></tr>
+<tr><td>BISHAN</td><td>4,291</td><td>S$705,000</td><td>S$6,464</td></tr>
+</table>
+<h2>Most affordable towns (median price per sqm)</h2>
+<table><tr><th>Town</th><th>Transactions</th><th>Median price</th><th>Median S$/sqm</th></tr>
+<tr><td>JURONG WEST</td><td>16,035</td><td>S$465,000</td><td>S$4,609</td></tr>
+<tr><td>WOODLANDS</td><td>17,434</td><td>S$472,000</td><td>S$4,664</td></tr>
+<tr><td>CHOA CHU KANG</td><td>10,979</td><td>S$498,000</td><td>S$4,731</td></tr>
+<tr><td>YISHUN</td><td>16,572</td><td>S$438,000</td><td>S$4,943</td></tr>
+<tr><td>JURONG EAST</td><td>4,959</td><td>S$450,000</td><td>S$4,945</td></tr>
+</table>
+<img src="../charts/town_price_per_sqm.png" alt="Town price per sqm">
+
+<h2>Lease decay</h2>
+<img src="../charts/lease_decay_curve.png" alt="Lease decay curve">
+<p>Holding other factors constant in the hedonic model, each additional year of
+remaining lease is associated with about +1.0%
+on price. The raw curve above is flatter because older-lease bands mix smaller
+flats in central towns with larger flats elsewhere.</p>
+
+<h2>Valuation model</h2>
+<img src="../charts/feature_importance.png" alt="Feature importance">
+<img src="../charts/predicted_vs_actual.png" alt="Predicted vs actual">
+<p>Floor area is the dominant price driver, followed by town and remaining
+lease. The gradient boosting model prices a typical resale flat within about
+6% of its transacted price on unseen 2025-2026 data.</p>
+
+<h2>Segments priced below the model, 2026 (model-relative, not investment advice)</h2>
+<table><tr><th>Town</th><th>Flat type</th><th>Transactions</th><th>Median gap vs model</th></tr>
+<tr><td>BUKIT MERAH</td><td>2 ROOM</td><td>30</td><td>-4.5%</td></tr>
+<tr><td>TOA PAYOH</td><td>3 ROOM</td><td>376</td><td>-3.6%</td></tr>
+<tr><td>YISHUN</td><td>4 ROOM</td><td>717</td><td>-2.7%</td></tr>
+<tr><td>BUKIT BATOK</td><td>EXECUTIVE</td><td>67</td><td>-2.4%</td></tr>
+<tr><td>JURONG EAST</td><td>4 ROOM</td><td>128</td><td>-2.3%</td></tr>
+</table>
+<h2>Segments priced above the model, 2026</h2>
+<table><tr><th>Town</th><th>Flat type</th><th>Transactions</th><th>Median gap vs model</th></tr>
+<tr><td>QUEENSTOWN</td><td>5 ROOM</td><td>83</td><td>+14.3%</td></tr>
+<tr><td>CENTRAL AREA</td><td>3 ROOM</td><td>60</td><td>+11.6%</td></tr>
+<tr><td>SERANGOON</td><td>EXECUTIVE</td><td>47</td><td>+9.6%</td></tr>
+<tr><td>CLEMENTI</td><td>5 ROOM</td><td>68</td><td>+9.2%</td></tr>
+<tr><td>TOA PAYOH</td><td>5 ROOM</td><td>141</td><td>+9.1%</td></tr>
+</table>
+
+<p class="note">Limitations: prices are nominal (not inflation-adjusted). HDB
+excludes transactions that may not reflect full market price, such as sales
+between relatives. Location is known at block level only; renovation, view,
+floor-level amenities and exact distance to MRT are not in the data and are
+part of the model's remaining error. "Below the model" means below what flats
+with the same recorded attributes transacted at; it is not investment advice.</p>
+</body>
+</html>
